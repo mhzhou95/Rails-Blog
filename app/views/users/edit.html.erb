@@ -1,0 +1,9 @@
+<h2>Edit Account </h2>
+
+<%= form_for @user do |t| %>
+	Username: <%= t.text_field :username%><br>
+	Password: <%= t.text_field :password %>
+	<%= t.submit %>
+	<%end %>
+<hr>
+	<%= link_to "Delete Account", user_path, method: :delete %>
