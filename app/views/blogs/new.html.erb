@@ -1,0 +1,11 @@
+<h2>Create a Blog!</h2>
+
+
+
+	<%= form_for @blog do |n| %>
+<div>
+	title: <%= n.text_field :title %><br>
+	content: <%= n.text_area :content %><br>
+	<%= n.submit  %>
+</div>
+	<% end %>
