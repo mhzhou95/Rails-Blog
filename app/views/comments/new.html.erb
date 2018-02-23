@@ -1,0 +1,4 @@
+<%= form_for([@comment, @blog.comments.build]) do |t| %>
+<%= t.text_area :message %>
+<%= t.submit %>
+<% end %>

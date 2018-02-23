@@ -2,6 +2,6 @@
 
 <% @user.each do |t| %>
 	<div>
-		<%= t.username %><br>
+		<a href="/users/<%= :id %>"><%= t.username %> </a><br>
 	</div>
 	<% end %>
