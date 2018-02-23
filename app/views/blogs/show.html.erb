@@ -3,19 +3,34 @@
 <div> <%= @blog.content %></div>
 <br>
 <div>Created By: <%= @user.username %></div>
-<% if session[:user_id] == @blog.user_id %>
 <hr>
+<% if session[:user_id] == @blog.user_id %>
+
 	<%= link_to "Edit Blog", edit_blog_path, method: :get %>
 	<%= link_to "Delete Blog", blog_path, method: :delete %>
+	<hr>
 	<% end %>
+
+<div>
+	<% @blog.comments.each do |t| %>
+	<div>
+	<% user = User.find_by_id(t.user_id) %>
+	<%= user.username %> said: <br>
+	<%= t.message %>
+	
+	<% if session[:user_id] == t.user_id %>
+	 	<a href="/blogs/<%= @blog.id %>/comments/<%= t.id%>/edit">Edit</a>
+</div>
+	<% end %>
+	<% end %>
+</div>
 
 <% if session[:user_id] %>
 <hr>
-<%= form_tag(@blog) do %>
-<div>Comment: <%= text_field_tag :message %></div>
-<%= submit_tag "Create Comment" %>
-<% end %>
-
-
-<%= link_to "Make a comment", new_blog_comment_path(@blog), method: :get %>
+<%= form_with(model: [@blog, @blog.comments.build]) do |f| %>
+	<div class="form-group">
+		<%= f.text_area :message %>
+	</div>
+	<%= f.submit %>
+	<% end %>
 <% end %>

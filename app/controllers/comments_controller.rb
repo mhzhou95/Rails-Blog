@@ -3,33 +3,47 @@ class CommentsController < ApplicationController
 		user = User.find_by_id(session[:user_id])
 		blog = Blog.find_by_id(params[:id])
 	end
+
 	def new
-		@blog = Blog.find_by_id(params[:id])
 		@comment = Comment.new
-		end
+		@blog = Blog.find_by_id(params[:id])
+		
+	end
 
 	def create
-		
-		user = User.find_by_id(session[:user_id])
-		blog = Blog.find_by_id(params[:id])
-		comment = Comment.new(message: params[:message], user_id: user.id, blog_id: blog.id)
-		redirect_to "/blogs"
-		# if comment.save
-		# 	redirect_to "/blogs/#{blog.id}"
-		# 	flash[:message] = "comment created"
-		# else
-		# 	flash[:message]= "fail to create comment"
-		# 	redirect_to "/blogs/#{blog.id}"
-		# end
+	@user = User.find_by_id(session[:user_id])
+	@blog = Blog.find(params[:blog_id])
+    @comment = @blog.comments.new(comment_params)
+    @comment.user_id = @user.id
+    @comment.blog_id = @blog.id
+    @comment.save
+    redirect_to "/blogs/#{@blog.id}"
 	end
 
 	def edit
+		@user = User.find_by_id(session[:user_id])
+		@blog = Blog.find_by_id(params[:id])
+		@comment = Comment.find_by_id(params[:id])
+
 	end
 	
-	def destroy
+	def update
+		@blog = Blog.find_by_id(params[:id])
+		@comment = Comment.find_by_id(params[:id])
+		if @comment.update(comment_params)
+		redirect_to "/blogs/#{@comment.blog_id}"
+
+		flash[:message] = "Comment Updated"
+	else
+		flash[:message] = "Failed to Update Comment"
+	end
 	end
 
 	def destroy
+		@comment = Comment.find_by_id(params[:id])
+		@comment.destroy()
+		redirect_to '/'
+		flash[:message] = "Comment Deleted"
 	end
 
 	private

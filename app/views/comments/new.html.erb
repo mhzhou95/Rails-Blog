@@ -1,4 +1,8 @@
-<%= form_for([@comment, @blog.comments.build]) do |t| %>
-<%= t.text_area :message %>
-<%= t.submit %>
-<% end %>
+
+<%= form_for [@blog, @blog.comments.build]  do |f| %>
+    <div>
+      <%= f.text_area :message %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>

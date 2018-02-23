@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 		if @user && @user.authenticate(params[:password])
 			session[:user_id] = @user.id
 			flash[:message] = "Login successful"
-			redirect_to '/users/show'
+			redirect_to "/users/#{@user.id}"
 		else
 			flash[:message] = "Login failed"
 			redirect_to "/login"

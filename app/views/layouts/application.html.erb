@@ -19,7 +19,7 @@
         <% end %>
         <% if session[:user_id] %>
         <li><a href="/blogs/new">Create a Blog</a></li>
-        <li><a href="/users/show">Your Blogs</a></li>
+        <li><a href="/users/<%=session[:user_id]%>">Your Blogs</a></li>
         <li><a href="/users/<%=session[:user_id] %>/edit">Settings</a></li>
         <li><%= link_to "Logout", logout_path, method: :post %></li>
         <% end %>
