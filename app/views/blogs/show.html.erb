@@ -3,3 +3,19 @@
 <div> <%= @blog.content %></div>
 <br>
 <div>Created By: <%= @user.username %></div>
+<% if session[:user_id] == @blog.user_id %>
+<hr>
+	<%= link_to "Edit Blog", edit_blog_path, method: :get %>
+	<%= link_to "Delete Blog", blog_path, method: :delete %>
+	<% end %>
+
+<% if session[:user_id] %>
+<hr>
+<%= form_tag(@blog) do %>
+<div>Comment: <%= text_field_tag :message %></div>
+<%= submit_tag "Create Comment" %>
+<% end %>
+
+
+<%= link_to "Make a comment", new_blog_comment_path(@blog), method: :get %>
+<% end %>

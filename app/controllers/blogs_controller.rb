@@ -2,11 +2,13 @@ class BlogsController < ApplicationController
 
 	def index
 		@blogs = Blog.all
+		
 	end
 
 	def show
 		@blog = Blog.find_by_id(params[:id])
-		@user = User.find_by_id(@blog.id)
+		@user = User.find_by_id(@blog.user_id)
+
 	end
 
 	def new
@@ -29,10 +31,27 @@ class BlogsController < ApplicationController
 	end
 
 	def edit
+		@blog = Blog.find_by_id(params[:id])
+	end
+
+	def update 
+		@blog = Blog.find_by_id(params[:id])
+		if @blog.update(blogs_params)
+			flash[:message] = "your blog was successfully updated"
+			redirect_to "/blogs/#{@blog.id}"
+		else
+			flash[:message] = "unable to update blog"
+			render	"/blogs/#{@blog.id}/edit"
+		end
 	end
 
 	def destroy
+		@blog = Blog.find_by_id(params[:id])
+		@blog.destroy()
+		redirect_to '/'
+		flash[:message] = "Blog Deleted"
 	end
+
 
 	private
 
