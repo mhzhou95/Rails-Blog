@@ -1,0 +1,35 @@
+#comments a {
+	margin: 10px;
+}
+#comments{
+	margin: 10px 0px;
+	padding: 5px;
+	padding-bottom:20px;
+	overflow-wrap: break-word;
+	background-color: lightgreen;
+}
+#comment_box{
+	width: 80%;
+	display:inline-block;
+}
+
+#edit_comment_button{
+	padding-top:5px;
+	float: right;
+}
+
+#edit_comment_box{
+	max-width: 100%;
+	padding: 5px;
+}
+
+
+#edit_comment_delete{
+	margin: 5px;
+	padding-top: 5px;
+	margin-top: 20px;
+}
+
+// * {
+// 	border: 1px solid red;
+// }

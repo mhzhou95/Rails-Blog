@@ -9,7 +9,7 @@
   </head>
 
   <body>
-  	<nav>
+  	<nav class="navbar">
   		<ul>
   			<li><a href="/">Home</a></li>
   			<li><a href="/users">List of Users</a></li>
@@ -25,7 +25,7 @@
         <% end %>
   		</ul>
   	</nav>
-  	<%= flash[:message] if flash[:message] %>
+  	<div id="flash_message"><%= flash[:message] if flash[:message] %></div>
     <%= yield %>
   </body>
 </html>
