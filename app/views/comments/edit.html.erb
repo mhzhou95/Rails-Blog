@@ -1,8 +1,11 @@
 <%= form_for @comment, url: {action: "update"}  do |f| %>
-    <div>
-      <%= f.text_area :message %>
+    <div id="edit_comment_box">
+      <%= f.text_area :message, size: "60x4", style: "max-width:100%", style: "resize:vertical", style: "font-size:12pt"%>
     </div>
+    
     <%= f.submit %>
+
   <% end %>
-  
+  <div id="edit_comment_delete">
 <%= link_to "Delete Comment", blog_comment_path, method: :delete %>
+  </div>

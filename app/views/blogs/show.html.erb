@@ -11,17 +11,16 @@
 	<hr>
 	<% end %>
 
-<div>
+<div id="comment_box">
 	<% @blog.comments.each do |t| %>
-	<div>
+	<div id="comments">
 	<% user = User.find_by_id(t.user_id) %>
-	<%= user.username %> said: <br>
-	<%= t.message %>
-	
+	<a href="/users/<%=user.id%>"><%= user.username%>:</a> <%= t.message %>
 	<% if session[:user_id] == t.user_id %>
-	 	<a href="/blogs/<%= @blog.id %>/comments/<%= t.id%>/edit">Edit</a>
-</div>
-	<% end %>
+	 	<a href="/blogs/<%= @blog.id %>/comments/<%= t.id%>/edit" id="edit_comment_button">edit</a>
+	 	<% end %>
+	</div>
+	
 	<% end %>
 </div>
 
