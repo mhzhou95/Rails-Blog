@@ -1,11 +1,14 @@
-<h2>Create a Blog!</h2>
+<div id="wrapper">
+<h2 class="Blog_Title">Create a Blog!</h2>
 
 
 
 	<%= form_for @blog do |n| %>
 <div>
-	<div>title: <%= n.text_field :title %><br></div>
-	<div>content: <%= n.text_area :content %><br></div>
+	<div id="Create_Blog_Title">Title:<br><%= n.text_field :title, style: "font-size: 12pt", id: "text_field_title" %> <br> </div> <br>
+	<div id="Create_Blog_Content">Content:<br> <%= n.text_area :content, rows: "10", cols: "60", style: "max-width", resize: "vertical", style: "font-size: 12pt", id: "text_area_content"%><br> </div>
+	<br>
 	<%= n.submit  %>
 </div>
 	<% end %>
+</div>

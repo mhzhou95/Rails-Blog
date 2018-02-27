@@ -1,9 +1,11 @@
-<h2>Editing your Blog</h2>
+<h2 class="Blog_Title">Editing your Blog</h2>
 
 <%= form_for @blog do |f| %>
 
-	<%= f.text_field :title %><br>
-	<%= f.text_area :content %><br>
-	<%= f.submit %>
-
+	<div>
+	<div id="Create_Blog_Title">Title: <br><%= f.text_field :title, style: "font-size: 12pt", id: "text_field_title" %></div><br>
+	<div id="Create_Blog_Content">Content: <br><%= f.text_area :content, size: "60x15", style: "max-width", resize: "vertical", style: "font-size: 12pt", id: "text_area_content"%></div>
+	<br>
+	<%= f.submit  %>
+</div>
 	<% end %>

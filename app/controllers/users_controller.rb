@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
+	before_action :authenticate, only: [:edit, :update, :destroy]
+
 	def index
 		@user = User.all
 	end
 
 	def show
+		if session[:user_id]
+		@user = User.find_by_id(session[:user_id])
+		@blogs = @user.blogs
+		else
 		@user = User.find_by_id(params[:id])
+		end
 		@blogs = @user.blogs
 	end
 
@@ -14,13 +21,16 @@ class UsersController < ApplicationController
 
 	def create
 		user = User.new(user_params)
-		if user.save
+
+		if !User.exists?(username: user.username)
+			user.save
 			redirect_to '/users'
 			flash[:message] = "Account successfully created"
 		else
 			flash[:message] = "Failed to create account"
-			redirect "/users/new"
+			redirect_to "/users/new"
 		end
+		
 	end
 
 	def edit
@@ -54,3 +64,4 @@ class UsersController < ApplicationController
 	end
 
 end
+
