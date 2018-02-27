@@ -1,7 +1,7 @@
-<h2>List of Users</h2>
+<h2 class="Blog_Title">List of Users</h2>
 
 <% @user.each do |t| %>
-	<div>
+	<div class="Home_Page_Blogs">
 		<a href="/users/<%= t.id %>"><%= t.username %> </a><br>
 	</div>
 	<% end %>

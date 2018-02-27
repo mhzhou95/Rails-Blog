@@ -1,9 +1,11 @@
-<h2>Make a account</h2>
+<h2 class="Blog_Title">Make a account</h2>
 
 <%= form_for @user do |t| %>
-<div>
-	Username: <%= t.text_field :username %><br>
-	Password: <%= t.text_field :password %><br>
+<div id="Edit_User">
+	Username: <br><%= t.text_field :username %><br>
+	
+	<div id="Edit_User">Password: <br><%= t.password_field :password %><br>
+	</div>
 	<%= t.submit  %>
 </div>
 	<%end %>

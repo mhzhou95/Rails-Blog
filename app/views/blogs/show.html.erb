@@ -1,13 +1,14 @@
-<h2> <%= @blog.title %></h2>
+<h2 class="Blog_Title"> <%= @blog.title %></h2><br>
 
-<div> <%= @blog.content %></div>
+<div class="Blog_Content"> <%= @blog.content %></div>
 <br>
-<div>Created By: <%= @user.username %></div>
+<div class="Blog_Author">author: <%= @user.username %></div>
 <hr>
 <% if session[:user_id] == @blog.user_id %>
-
+<div id="Edit_Blog_Buttons">
 	<%= link_to "Edit Blog", edit_blog_path, method: :get %>
 	<%= link_to "Delete Blog", blog_path, method: :delete %>
+</div>
 	<hr>
 	<% end %>
 
@@ -28,7 +29,7 @@
 <hr>
 <%= form_with(model: [@blog, @blog.comments.build]) do |f| %>
 	<div class="form-group">
-		<%= f.text_area :message %>
+		<%= f.text_area :message, style: "font-size:12pt", size: "40x5" %>
 	</div>
 	<%= f.submit %>
 	<% end %>

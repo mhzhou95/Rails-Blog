@@ -6,16 +6,16 @@ class ApplicationController < ActionController::Base
   end 
 
 
+def authenticate
+    unless current_user 
+    	flash[:message] = "You are not logged in!"
+    	redirect_to "/login"
+	end
+end
+
 
 end
 
 
 
 
-
-
-# def authenticate
-#    if session[:user_id] == nil
-#       redirect_to root_path
-# 	end
-# end

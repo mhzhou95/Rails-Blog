@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+	before_action :authenticate, only: [:new, :create, :edit, :update, :destroy]
+	
 	def index
 		user = User.find_by_id(session[:user_id])
 		blog = Blog.find_by_id(params[:id])

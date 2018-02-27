@@ -7,12 +7,15 @@
 	display:inline-block;
 	margin: 0px 10px;
 	margin-bottom: 12px;
+	font-size: 13pt;
+	padding: 8px;
 }
 
-#flash_messgae{
+#flash_message{
 	margin: 2px auto;
-	display: inline-block;
+	color:white;
 }
+
 
 
 input[type="submit"]{
@@ -25,10 +28,27 @@ body{
 	right:0;
 	text-align:center;
 	padding: 10px;
+	background-color: teal;
+	background-image: url("haha.jpg");
+	background-size: cover;
 }
 
 a{
 	border-bottom: 1px solid;
 	text-decoration:none;
-	color: black;
+	color: white;
+}
+
+@media all and (min-width: 350px) and (max-width: 450px){
+	#text_area_content{
+		width: 40vmin;
+	}
+	#text_field_title{
+		width:35vmin;
+	}
+	#Create_Blog_Title{
+		width: 40%;
+	}
+
+	
 }

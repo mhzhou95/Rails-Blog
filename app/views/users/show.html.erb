@@ -1,9 +1,8 @@
-<h2>User: <%= @user.username %></h2>
-
-<h2>Blogs</h2>
+<h2 class="Blog_Title">User: <%= @user.username %></h2>
+<br>
 
 <% @blogs.each do |t| %>
 
-<div><a href="/blogs/<%= t.id %>"><%= t.title %></a></div>
+<div class="Home_Page_Blogs"><a href="/blogs/<%= t.id %>"><%= t.title %></a></div>
 
 <%end%>

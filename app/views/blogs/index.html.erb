@@ -1,7 +1,7 @@
-<h2>Recent Blogs</h2>
+<h2 class="Blog_Title">Recent Blogs</h2>
 
 <% @blogs.each do |t| %>
 
-<div><a href="/blogs/<%= t.id %>"><%= t.title %></a></div>
+<div class="Home_Page_Blogs"><a href="/blogs/<%= t.id %>"><%= t.title %></a></div>
 
 <%end%>

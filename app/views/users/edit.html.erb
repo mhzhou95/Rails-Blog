@@ -1,8 +1,12 @@
-<h2>Edit Account </h2>
+<h2 class="Blog_Title">Edit Account </h2>
 
 <%= form_for @user do |t| %>
-	Username: <%= t.text_field :username%><br>
-	Password: <%= t.text_field :password %>
+<div id="Edit_User">
+	Username:<br> <%= t.text_field :username, style: "font-size: 12pt "%><br>
+</div>
+	<div id="Edit_User">
+	Password:<br> <%= t.password_field :password, style: "font-size: 12pt" %><br>
+</div>
 	<%= t.submit %>
 	<%end %>
 <hr>
