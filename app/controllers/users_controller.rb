@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
 	def create
 		user = User.new(user_params)
-
+		if user.password.length >=4 && user.password.length <= 12
 		if !User.exists?(username: user.username)
 			user.save
 			redirect_to '/users'
@@ -30,6 +30,10 @@ class UsersController < ApplicationController
 			flash[:message] = "Failed to create account"
 			redirect_to "/users/new"
 		end
+	else
+		redirect_to "/users/new"
+		flash[:message] = "Password has to be between 4 to 12 characters"
+	end
 		
 	end
 
