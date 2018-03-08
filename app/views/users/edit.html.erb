@@ -10,4 +10,7 @@
 	<%= t.submit %>
 	<%end %>
 <hr>
-	<%= link_to "Delete Account", user_path, method: :delete %>
+<div id="DeleteButton"> <input type="button" name="" value="Delete Account"></div>
+	<div id="ConfirmDelete" style="display:none"><%= link_to "Confirm Delete Account", user_path, method: :delete %></div>
+
+<script type="text/javascript" src="/assets/main.js"></script>
