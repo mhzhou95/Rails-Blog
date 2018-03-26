@@ -3,14 +3,13 @@
 <div class="Blog_Content"> <%= @blog.content %></div>
 <br>
 <div class="Blog_Author">author: <%= @user.username %></div>
-<br>
-
+<hr>
 <% if session[:user_id] == @blog.user_id %>
 <div id="Edit_Blog_Buttons">
 	<%= link_to "Edit Blog", edit_blog_path, method: :get %>
 	<%= link_to "Delete Blog", blog_path, method: :delete %>
 </div>
-	
+	<hr>
 	<% end %>
 
 <div id="comment_box">
@@ -27,7 +26,7 @@
 </div>
 
 <% if session[:user_id] %>
-
+<hr>
 <%= form_with(model: [@blog, @blog.comments.build]) do |f| %>
 	<div class="form-group">
 		<%= f.text_area :message, style: "font-size:12pt", size: "40x5" %>
